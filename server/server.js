@@ -16,11 +16,38 @@ app.use(cookieParser());
 // Models
 const { User } = require('./models/user');
 const { Brand } = require('./models/brand');
+const { Shape } = require('./models/shape');
 
 // Middleware
 
 const { auth } = require('./middleware/auth');
 const { admin } = require('./middleware/admin');
+
+//=================================
+//           BOARDTYPES 
+//=================================
+
+app.post('/api/product/shape',auth,admin,(req,res)=>{
+
+    const shape = new Shape(req.body)
+
+    shape.save((err,doc)=>{
+        if (err) return res.json({success:false,err})
+        res.status(200).json({
+            success:true,
+            shape: doc
+        })
+    })
+
+});
+
+app.get('/api/product/shapes',(req,res)=>{
+    Shape.find({},(err,shapes)=>{
+        if(err) return res.status(400).send(err);
+        res.status(200).send(shapes)
+    })
+})
+
 
 //=================================
 //             BRAND 
