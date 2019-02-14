@@ -28,6 +28,35 @@ const { admin } = require('./middleware/admin');
 //            PRODUCTS 
 //=================================
 
+// BY ARRIVAL
+// /articles?sortBy=createdAt&order=desc&limit=4
+
+// BY SELL
+// /articles?sortBy=sold&order=desc&limit=4
+app.get('/api/product/articles',(req,res)=>{
+    
+    let order = req.query.order ? req.query.order : 'asc';
+    let sortBy = req.query.sortBy ? req.query.sortBy : '_id';
+    let limit = req.query.limit ? parseInt(req.query.limit) : 100;
+
+    Product.
+    find().
+    populate('brand').
+    populate('shape').
+    sort([[sortBy,order]]).
+    limit(limit).
+    exec((err,articles)=>{
+        if(err) return res.status(400).send(err);
+        res.send(articles)
+    })
+
+
+})
+
+
+
+// /api/product/article?id=HSHSHSHS&type=single
+// /api/product/article?id=HSHSHSHS,JSJSJSJS,JSDSDDDSD&type=array
 app.get('/api/product/articles_by_id',(req,res)=>{
     let type = req.query.type;
     let items = req.query.id;
@@ -66,7 +95,7 @@ app.post('/api/product/article',auth,admin,(req,res)=>{
 })
 
 //=================================
-//           BOARDTYPES 
+//            SHAPES 
 //=================================
 
 app.post('/api/product/shape',auth,admin,(req,res)=>{
