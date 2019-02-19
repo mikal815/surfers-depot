@@ -65,6 +65,12 @@ const Footer = () => {
 
                     </div>
                     <div className="left">
+                    <h2>Be the first to know</h2>
+                    <div>
+                        <div>
+                            Get all the latest information on events, sales and offers. Don't miss out.
+                        </div>
+                    </div>
 
                     </div>
                 </div>
