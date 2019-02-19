@@ -253,7 +253,7 @@ header {
 header .logo {
     font-family: 'Monoton', cursive;
     color: #ffffff;
-    font-size: 40px;
+    font-size: 25px;
     padding: 11px 0px;
 }
 
@@ -321,7 +321,7 @@ footer .logo {
     text-align: center;
     font-family: 'Monoton', cursive;
     color: #ffffff;
-    font-size: 40px;
+    font-size: 25px;
     padding: 11px 0px;
     border-bottom: 1px solid #4d4d4d;
 }
