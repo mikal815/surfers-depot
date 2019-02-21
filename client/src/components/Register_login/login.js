@@ -18,8 +18,7 @@ class Login extends Component {
                     placeholder:'Enter your email'
                 },
                 validation:{
-                    required: true,
-                    email: true
+                    required: true
                 },
                 valid: false,
                 touched: false,
@@ -62,6 +61,13 @@ class Login extends Component {
                     formdata={this.state.formdata.email}
                     change={(element)=> this.updateForm(element)}
                 />
+
+                <FormField
+                    id={'password'}
+                    formdata={this.state.formdata.password}
+                    change={(element)=> this.updateForm(element)}
+                />
+
 
             </form>
                 
