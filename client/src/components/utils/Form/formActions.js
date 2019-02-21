@@ -1,6 +1,12 @@
 export const validate = (element, formdata= []) => {
     let error = [true,''];
 
+    if(element.validation.email){
+        const valid = /\S+@\S+\.\S+/.test(element.value)
+        const message = `${!valid ? 'Must be a valid email':''}`;
+        error = !valid ? [valid,message] : error;
+    }
+
     if(element.validation.required){
         const valid = element.value.trim() !== '';
         const message = `${!valid ? 'This field is required':''}`;
@@ -26,4 +32,9 @@ export const update = (element, formdata, formName) => {
         newElement.valid = validData[0];
         newElement.validationMessage = validData[1];
     }
+
+    newElement.touched = element.blur;
+    newFormdata[element.id] = newElement;
+
+    return newFormdata;
 }

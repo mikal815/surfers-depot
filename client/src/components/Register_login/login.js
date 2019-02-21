@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import FormField from '../utils/Form/formfield';
-
+import { update } from '../utils/Form/formActions';
 import { connect } from 'react-redux';
 
 class Login extends Component {
@@ -18,7 +18,8 @@ class Login extends Component {
                     placeholder:'Enter your email'
                 },
                 validation:{
-                    required: true
+                    required: true,
+                    email: true
                 },
                 valid: false,
                 touched: false,
@@ -43,8 +44,12 @@ class Login extends Component {
         }
     }
 
-    updateForm = () => {
-
+    updateForm = (element) => {
+        const newFormdata = update(element,this.state.formdata,'login');
+        this.setState({
+            formError: false,
+            formdata: newFormdata
+        })
     }
 
 
