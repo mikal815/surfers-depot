@@ -42,7 +42,33 @@ class Header extends Component {
     }
 
 
+    logoutHandler = () => {
+        
+    }
+
+    cartLink = (item,i) => {
+        const user = this.props.user.userData;
+
+        return (
+            <div className="cart_link" key={i}>
+                <span>{user.cart ? user.cart.length:0}</span>
+                <Link to={item.linkTo}>
+                    {item.name}
+                </Link>
+            </div>
+        )
+    }
+
+
     defaultLink = (item,i) =>(
+        item.name === 'Log out' ?
+            <div className="log_out_link"
+                key={i}
+                onClick={()=> this.logoutHandler}
+            >
+                {item.name}
+            </div>
+        :
         <Link to={item.linkTo} key={i}>
             {item.name}
         </Link>
@@ -66,7 +92,11 @@ class Header extends Component {
         }
 
         return list.map((item,i)=>{
-            return this.defaultLink(item,i)
+            if(item.name !== 'My Cart'){
+                return this.defaultLink(item,i)
+            } else {
+                return this.cartLink(item,i)
+            }
         })
     }
 
