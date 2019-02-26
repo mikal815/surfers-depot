@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+
 import { connect } from 'react-redux'; 
+import { logoutUser } from '../../../actions/user_actions';
 
 class Header extends Component {
 
@@ -43,7 +45,11 @@ class Header extends Component {
 
 
     logoutHandler = () => {
-        
+        this.props.dispatch(logoutUser()).then(response =>{
+            if(response.payload.success){
+                this.props.history.push('/')
+            }
+        })
     }
 
     cartLink = (item,i) => {
@@ -64,7 +70,7 @@ class Header extends Component {
         item.name === 'Log out' ?
             <div className="log_out_link"
                 key={i}
-                onClick={()=> this.logoutHandler}
+                onClick={()=> this.logoutHandler()}
             >
                 {item.name}
             </div>
@@ -136,4 +142,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps)(withRouter(Header));
