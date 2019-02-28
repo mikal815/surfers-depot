@@ -6,19 +6,27 @@ const HomeSlider = (props) => {
 
     const slides = [
         {
-            img:'/images/featured/featured_home.jpg',
+            img:'/images/featured/featured_home_2.jpg',
             lineOne:'Channel Islands',
             lineTwo:'Custom shop',
             linkTitle:'Shop now',
             linkTo:'/shop'
         },
         {
-            img:'/images/featured/featured_home_2.jpg',
+            img:'/images/featured/featured_home_3.jpg',
+            lineOne:'Sale items',
+            lineTwo:'Sweet deals~',
+            linkTitle:'View offers',
+            linkTo:'/shop'
+        },
+        {
+            img:'/images/featured/featured_home.jpg',
             lineOne:'Sale items',
             lineTwo:'Sweet deals~',
             linkTitle:'View offers',
             linkTo:'/shop'
         }
+
 
     ]
 
@@ -28,7 +36,7 @@ const HomeSlider = (props) => {
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        arroq: false
+        arrows: false
     }
 
     const generateSlides = () =>(
@@ -38,11 +46,23 @@ const HomeSlider = (props) => {
                     <div className="featured_image"
                         style={{
                             background:`url(${item.img})`,
-                            height:`${window.innerHeight}px`
+                            height:`${window.innerHeight}px`,
+                            backgroundSize:`cover`
                         }}
                     >
                     <div className="featured_action">
-
+                        <div className="tag title">{item.lineOne}</div>
+                        <div className="tag low_title">{item.lineTwo}</div>
+                        <div>
+                            <MyButton
+                                type="default"
+                                title={item.linkTitle}
+                                linkTo={item.linkTo}
+                                addStyles={{
+                                    margin:'10px 0 0 0'
+                                }}
+                            />
+                        </div>
                     </div>
 
                     </div>
