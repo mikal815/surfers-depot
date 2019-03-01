@@ -18,13 +18,6 @@ const HomeSlider = (props) => {
             lineTwo:'Sweet deals~',
             linkTitle:'View offers',
             linkTo:'/shop'
-        },
-        {
-            img:'/images/featured/featured_home.jpg',
-            lineOne:'Sale items',
-            lineTwo:'Sweet deals~',
-            linkTitle:'View offers',
-            linkTo:'/shop'
         }
 
 
@@ -47,12 +40,40 @@ const HomeSlider = (props) => {
                         style={{
                             background:`url(${item.img})`,
                             height:`${window.innerHeight}px`,
-                            backgroundSize:`cover`
+                            backgroundSize:`cover`,
+                            position:`relative`,
+                            backgroundPosition: `center left`
                         }}
                     >
-                    <div className="featured_action">
-                        <div className="tag title">{item.lineOne}</div>
-                        <div className="tag low_title">{item.lineTwo}</div>
+                    <div className="featured_action"
+                        style={{
+                            position: `absolute`,
+                            top: `45%`,
+                            left: `8%`
+                        }}>
+                        <div className="tag title"
+                            style={{
+                                background:`#82828287`,
+                                color:`#ffffff`,
+                                padding:`0px 20px`,
+                                textTransform:`uppercase`,
+                                display: `table`,
+                                fontSize:`70px`,
+                                fontWeight:`700`
+                            }}
+                        >{item.lineOne}</div>
+                        <div className="tag low_title"
+                            style={{
+                                background:`#82828287`,
+                                color:`#ffffff`,
+                                padding:`0px 20px`,
+                                textTransform:`uppercase`,
+                                display:`table`,
+                                fontSize:`50px`,
+                                fontWeight:`300`,
+                                marginTop:`10px`
+                            }}
+                        >{item.lineTwo}</div>
                         <div>
                             <MyButton
                                 type="default"
