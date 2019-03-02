@@ -20,4 +20,11 @@ export function getProductsBySell(){
 
 export function getProductsByArrival(){
 
+    const request = axios.get(`${PRODUCT_SERVER}/articles?sortBy=createdAt&order=desc&limit=4`)
+    .then(response => response.data);
+
+    return {
+        type: GET_PRODUCTS_BY_ARRIVAL,
+        payload: request
+    }
 }

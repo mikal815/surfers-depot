@@ -10,7 +10,7 @@ export default function(state={},action){
         case GET_PRODUCTS_BY_SELL:
          return {...state, bySell: action.payload }
         case GET_PRODUCTS_BY_ARRIVAL:
-         return {...state} 
+         return {...state, byArrival: action.payload } 
         default:
         return state;
     }
