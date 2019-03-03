@@ -38,6 +38,16 @@ class CollapseCheckbox extends Component {
     )
 
 
+    renderList = () => (
+        this.props.list ?
+            this.props.list.map((value)=>(
+                <ListItem>
+                    
+                </ListItem>
+            ))
+        :null
+    )
+
     render() {
         return (
             <div className="collapse_items_wrapper">
@@ -49,6 +59,12 @@ class CollapseCheckbox extends Component {
                         />
                         {this.handleAngle()}
                     </ListItem>
+                    <Collapse in={this.state.open} timeout="auto" unmountOnExit>
+                       <List component="div" disablePadding>
+                            {this.renderList()}
+                       </List>
+                    
+                    </Collapse>
 
                 </List>
                 
