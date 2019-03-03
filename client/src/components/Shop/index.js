@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import PageTop from '../utils/Form/page_top';
 
-import { inches } from '../utils/Form/fixed_categories';
+import { inches, price } from '../utils/Form/fixed_categories';
 
 import { connect } from 'react-redux';
 import { getBrands, getShapes } from '../../actions/products_actions';
 
 import CollapseCheckbox from '../utils/Form/collapseCheckbox';
+import CollapseRadio from '../utils/Form/collapseRadio';
 
 class Shop extends Component {
 
@@ -61,11 +62,18 @@ class Shop extends Component {
                                 handleFilters={(filters)=> this.handleFilters(filters, 'inches')}
                             />
                             <CollapseCheckbox
-                                initState={true}
+                                initState={false}
                                 title="Shape"
                                 list={products.shapes}
                                 handleFilters={(filters)=> this.handleFilters(filters, 'shape')}
                             />
+                            <CollapseRadio
+                                initState={true}
+                                title="Price"
+                                list={price}
+                                handleFilters={(filters)=> this.handleFilters(filters, 'price')}
+                            />
+
 
 
 
