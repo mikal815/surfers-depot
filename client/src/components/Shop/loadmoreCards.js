@@ -11,6 +11,11 @@ const LoadmoreCards = (props) => {
 
                 />
             </div>
+            {
+                props.size > 0 && props.size >= props.limit ?
+
+                :null
+            }
             <div className="load_more_container">
                 <span onClick={()=>props.loadMore()}>
                     Load More
