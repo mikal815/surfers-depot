@@ -4,6 +4,8 @@ import PageTop from '../utils/Form/page_top';
 import { connect } from 'react-redux';
 import { getBrands, getShapes } from '../../actions/products_actions';
 
+import CollapseCheckbox from '../utils/Form/collapseCheckbox';
+
 class Shop extends Component {
 
     componentDidMount(){
@@ -11,6 +13,9 @@ class Shop extends Component {
         this.props.dispatch(getShapes());
     }
 
+    handleFilters = () => {
+
+    }
 
     render() {
         const products = this.props.products;
@@ -22,7 +27,14 @@ class Shop extends Component {
                 <div className="container">
                     <div className="shop_wrapper">
                         <div className="left">
-                            left
+                            <CollapseCheckbox
+                                initState={true}
+                                title="Brands"
+                                list={products.brands}
+                                handleFilters={(filters)=> this.handleFilters(filters, 'brand')}
+                            />
+
+
                         </div>
                         <div className="right">
                             right
@@ -44,4 +56,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect()(Shop);
+export default connect(mapStateToProps)(Shop);
