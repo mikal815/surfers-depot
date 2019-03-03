@@ -56,9 +56,13 @@ app.post('/api/product/shop',(req,res)=>{
     populate('shape').
     sort([[sortBy,order]]).
     skip(skip).
-    limit(limit);
-    exec(()=>{
-        
+    limit(limit).
+    exec((err,articles)=>{
+        if(err) return res.status(400).send(err);
+        res.status(200).json({
+            size: articles.length,
+            articles
+        })
     })
 })
 
