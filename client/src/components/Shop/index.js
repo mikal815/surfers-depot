@@ -4,7 +4,7 @@ import PageTop from '../utils/Form/page_top';
 import { inches, price } from '../utils/Form/fixed_categories';
 
 import { connect } from 'react-redux';
-import { getBrands, getShapes } from '../../actions/products_actions';
+import { getProductsToShop, getBrands, getShapes } from '../../actions/products_actions';
 
 import CollapseCheckbox from '../utils/Form/collapseCheckbox';
 import CollapseRadio from '../utils/Form/collapseRadio';
@@ -27,6 +27,12 @@ class Shop extends Component {
     componentDidMount(){
         this.props.dispatch(getBrands());
         this.props.dispatch(getShapes());
+
+        this.props.dispatch(getProductsToShop(
+            this.state.skip,
+            this.state.limit,
+            this.state.filters
+        ))
     }
 
     handlePrice = (value) =>{
