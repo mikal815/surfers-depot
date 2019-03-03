@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PageTop from '../utils/Form/page_top';
 
+import { inches } from '../utils/Form/fixed_categories';
+
 import { connect } from 'react-redux';
 import { getBrands, getShapes } from '../../actions/products_actions';
 
@@ -13,8 +15,8 @@ class Shop extends Component {
         this.props.dispatch(getShapes());
     }
 
-    handleFilters = () => {
-
+    handleFilters = (filters,category) => {
+        console.log(filters);
     }
 
     render() {
@@ -33,6 +35,19 @@ class Shop extends Component {
                                 list={products.brands}
                                 handleFilters={(filters)=> this.handleFilters(filters, 'brand')}
                             />
+                            <CollapseCheckbox
+                                initState={false}
+                                title="Inches"
+                                list={inches}
+                                handleFilters={(filters)=> this.handleFilters(filters, 'inches')}
+                            />
+                            <CollapseCheckbox
+                                initState={true}
+                                title="Shape"
+                                list={products.shapes}
+                                handleFilters={(filters)=> this.handleFilters(filters, 'shape')}
+                            />
+
 
 
                         </div>
