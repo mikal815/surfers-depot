@@ -58,8 +58,8 @@ class CollapseRadio extends Component {
         :null
     )
 
-    handleChange = () =>{
-
+    handleChange = event =>{
+        this.setState({value: event.target.value})
     }
 
     render() {
