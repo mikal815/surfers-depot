@@ -34,7 +34,7 @@ const admin = [
 
 const UserLayout = (props) => {
 
-    const generateLinks = () =>(
+    const generateLinks = (links) =>(
         links.map((item,i)=>(
             <Link to={item.linkTo} key={i}>
                 {item.name}
