@@ -146,11 +146,32 @@ class AddProduct extends Component {
                 <div>
                     <h1>Add product</h1>
                     <form onSubmit={(event)=> this.submitForm(event)}>
+
                         <FormField
                             id={'name'}
                             formdata={this.state.formdata.name}
                             change={(element)=> this.updateForm(element)}
                         />
+
+                        <FormField
+                            id={'description'}
+                            formdata={this.state.formdata.description}
+                            change={(element)=> this.updateForm(element)}
+                        />
+
+                        <FormField
+                            id={'price'}
+                            formdata={this.state.formdata.price}
+                            change={(element)=> this.updateForm(element)}
+                        />
+                    <div className="form_devider"></div>   
+
+                         <FormField
+                            id={'brand'}
+                            formdata={this.state.formdata.brand}
+                            change={(element)=> this.updateForm(element)}
+                        /> 
+
                     </form>
                 </div>
 
