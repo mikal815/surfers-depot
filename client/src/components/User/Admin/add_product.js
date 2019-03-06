@@ -73,12 +73,31 @@ class AddProduct extends Component {
                     options: []
                 },
                 validation:{
-                    required: true,
+                    required: true  
                 },
                 valid: false,
                 touched: false,
                 validationMessage:'',
                 showlabel:true
+            },
+            shipping: {
+                element: 'select',
+                value: '',
+                config:{
+                    label: 'Shipping',
+                    name: 'shipping_input',
+                    options:[
+                        {key:true,value:'Yes'},
+                        {key:false,value:'No'},
+                    ]
+                },
+                validation:{
+                    required: true
+                },
+                valid: false,
+                touched: false,
+                validationMessage:'',
+                showlabel: true
             },
             available:{
                 element: 'select',
@@ -109,7 +128,7 @@ class AddProduct extends Component {
                     options:[]
                 },
                 validation:{
-                    required: true,
+                    required: true
                 },
                 valid: false,
                 touched: false,
@@ -137,6 +156,14 @@ class AddProduct extends Component {
                 showlabel:true
             }
         }
+    }
+
+    componentDidMount(){
+        const formdata = this.state.formdata;
+
+        // this.props.dispatch(getBrands()).then(response =>{
+        //     console.log(this.products.brands)
+        // })
     }
 
 
@@ -172,6 +199,48 @@ class AddProduct extends Component {
                             change={(element)=> this.updateForm(element)}
                         /> 
 
+                        <FormField
+                            id={'shipping'}
+                            formdata={this.state.formdata.shipping}
+                            change={(element)=> this.updateForm(element)}
+                        /> 
+
+                        <FormField
+                            id={'available'}
+                            formdata={this.state.formdata.available}
+                            change={(element)=> this.updateForm(element)}
+                        /> 
+
+                    <div className="form_devider"></div>     
+
+                         <FormField
+                            id={'shape'}
+                            formdata={this.state.formdata.shape}
+                            change={(element)=> this.updateForm(element)}
+                        /> 
+
+                    <div className="form_devider"></div>     
+
+                        <FormField
+                            id={'publish'}
+                            formdata={this.state.formdata.publish}
+                            change={(element)=> this.updateForm(element)}
+                        /> 
+
+                        {this.state.formSuccess ?
+                            <div className="form_success">
+                                Success
+                            </div>
+                        :null}
+
+                        {this.state.formError ?
+                            <div className="error_label">
+                                Please check your data
+                                    </div>
+                            : null}
+                        <button onClick={(event) => this.submitForm(event)}>
+                            Add product
+                                    </button>
                     </form>
                 </div>
 
