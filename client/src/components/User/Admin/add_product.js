@@ -171,6 +171,11 @@ class AddProduct extends Component {
             const newFormData = populateOptionFields(formdata,this.props.products.brands,'brand');
             this.updateFields(newFormData)
         })
+
+        this.props.dispatch(getShapes()).then(response =>{
+            const newFormData = populateOptionFields(formdata,this.props.products.shapes,'shape');
+            this.updateFields(newFormData)
+        })
     }
 
 
