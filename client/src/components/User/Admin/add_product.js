@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import UserLayout from '../../../hoc/user';
 
 import FormField from '../../utils/Form/formfield';
-import { update, generateData, isFormValid } from '../../utils/Form/formActions';
+import { update, generateData, isFormValid, populateOptionFields } from '../../utils/Form/formActions';
 
 import { connect } from 'react-redux';
 import { getBrands, getShapes } from '../../../actions/products_actions';
@@ -158,12 +158,19 @@ class AddProduct extends Component {
         }
     }
 
+    updateFields = (newFormdata) => {
+        this.setState({
+            formdata: newFormdata
+        })
+    }
+
     componentDidMount(){
         const formdata = this.state.formdata;
 
-        // this.props.dispatch(getBrands()).then(response =>{
-        //     console.log(this.products.brands)
-        // })
+        this.props.dispatch(getBrands()).then(response =>{
+            const newFormData = populateOptionFields(formdata,this.props.products.brands,'brand');
+            this.updateFields(newFormData)
+        })
     }
 
 
