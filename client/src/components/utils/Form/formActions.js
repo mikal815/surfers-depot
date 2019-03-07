@@ -56,7 +56,7 @@ export const generateData = (formdata, formName) =>{
 
         }
     }
-
+   
     return dataToSubmit;
 }
 
@@ -80,4 +80,17 @@ export const populateOptionFields = (formdata, arrayData=[],field) =>{
 
     newFormdata[field].config.options = newArray;
     return newFormdata;
+}
+
+export const resetFields = (formdata, formName) =>{
+    const newFormdata = {...formdata};
+
+    for(let key in formdata){
+        newFormdata[key].value = '';
+        newFormdata[key].valid = false;
+        newFormdata[key].touched = false;
+        newFormdata[key].validationMessage = '';
+        
+    }
+    return newFormdata
 }

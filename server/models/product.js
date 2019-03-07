@@ -36,10 +36,10 @@ const productSchema = mongoose.Schema({
         ref: 'Shape',
         required: true
     },
-    length:{
-        required: true,
-        type: Number
-    },
+    // length:{
+    //     required: true,
+    //     type: Number
+    // },
     sold:{
         type: Number,
         maxlength: 100,

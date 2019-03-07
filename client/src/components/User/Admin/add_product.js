@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import UserLayout from '../../../hoc/user';
 
 import FormField from '../../utils/Form/formfield';
-import { update, generateData, isFormValid, populateOptionFields } from '../../utils/Form/formActions';
+import { update, generateData, isFormValid, populateOptionFields, resetFields } from '../../utils/Form/formActions';
 
 import { connect } from 'react-redux';
 import { getBrands, getShapes, addProduct } from '../../../actions/products_actions';
@@ -135,6 +135,27 @@ class AddProduct extends Component {
                 validationMessage:'',
                 showlabel:true
             },
+            // length: {
+            //     element: 'select',
+            //     value: '',
+            //     config:{
+            //         label: 'Length',
+            //         name: 'length_input',
+            //         options:[
+            //             {key:68,value:68},
+            //             {key:72,value:72},
+            //             {key:108,value:108},
+            //             {key:120,value:120}
+            //         ]
+            //     },
+            //     validation:{
+            //         required: true
+            //     },
+            //     valid: false,
+            //     touched: false,
+            //     validationMessage:'',
+            //     showlabel: true
+            // },
             publish:{
                 element: 'select',
                 value: '',
@@ -173,10 +194,19 @@ class AddProduct extends Component {
     }
 
     resetFieldHandler = () =>{
+        const newFormData = resetFields(this.state.formdata, 'products');
+
+
         
         this.setState({
+            formdata: newFormData,
             formSuccess:true
         })
+        setTimeout(()=>{
+            this.setState({
+                formSuccess: false
+            })
+        },3000)
     }
 
     submitForm= (event) =>{
