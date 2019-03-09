@@ -259,6 +259,9 @@ class AddProduct extends Component {
         })
     }
 
+    imagesHandler = () =>{
+        
+    }
 
     render() {
         return (
