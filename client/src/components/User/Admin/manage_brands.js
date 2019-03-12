@@ -4,7 +4,7 @@ import FormField from '../../utils/Form/formfield';
 import { update, generateData, isFormValid, resetFields } from '../../utils/Form/formActions';
 
 import { connect } from 'react-redux';
-import { getBrands } from '../../../actions/products_actions';
+import { getBrands, addBrand } from '../../../actions/products_actions';
 
 class ManageBrands extends Component {
 
@@ -40,6 +40,46 @@ class ManageBrands extends Component {
         :null
     )
 
+    updateForm = (element) => {
+        const newFormdata = update(element,this.state.formdata,'brands');
+        this.setState({
+            formError: false,
+            formdata: newFormdata
+        })
+    }
+
+    resetFieldsHandler = () => {
+        const newFormData = resetFields(this.state.formdata, 'brands');
+
+        this.setState({
+            formdata: newFormData,
+            formSuccess:true
+        })
+    }
+
+    submitForm= (event) =>{
+        event.preventDefault();
+
+        let dataToSubmit = generateData(this.state.formdata,'brands');
+        let formIsValid = isFormValid(this.state.formdata,'brands')
+        let existingBrands = this.props.products.brands;
+
+        if(formIsValid){
+           this.props.dispatch(addBrand(dataToSubmit, existingBrands)).then(response=>{
+               if(response.payload.success){
+                    this.resetFieldsHandler();
+               }else{
+                    this.setState({formError:true})
+               }
+           })
+        } else {
+            this.setState({
+                formError: true
+            })
+        }
+
+    }
+
     componentDidMount(){
         this.props.dispatch(getBrands());
     }
@@ -56,7 +96,22 @@ class ManageBrands extends Component {
 
                     </div>
                     <div className="right">
-                        form
+                    <form onSubmit={(event)=> this.submitForm(event)}>
+                        <FormField
+                            id={'name'}
+                            formdata={this.state.formdata.name}
+                            change={(element)=> this.updateForm(element)}
+                        />
+
+                            {this.state.formError ?
+                                <div className="error_label">
+                                    Please check your data
+                                    </div>
+                                : null}
+                            <button onClick={(event) => this.submitForm(event)}>
+                                Add brand
+                                    </button>
+                    </form>
                     </div>
 
                 </div>
