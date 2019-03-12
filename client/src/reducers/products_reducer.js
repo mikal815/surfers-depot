@@ -4,6 +4,7 @@ import {
     GET_BRANDS,
     ADD_BRAND,
     GET_SHAPES,
+    ADD_SHAPE,
     GET_PRODUCTS_TO_SHOP,
     ADD_PRODUCT,
     CLEAR_PRODUCT
@@ -23,6 +24,8 @@ export default function (state = {}, action) {
             return { ...state, addBrand: action.payload.success, brands:action.payload.brands }
         case GET_SHAPES:
             return { ...state, shapes: action.payload }
+        case ADD_SHAPE:
+            return { ...state, addShape: action.payload.success, shapes:action.payload.shapes }  
         case GET_PRODUCTS_TO_SHOP:
             return {
                 ...state,

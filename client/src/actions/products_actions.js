@@ -3,12 +3,12 @@ import {
    GET_PRODUCTS_BY_SELL,
    GET_PRODUCTS_BY_ARRIVAL,
    GET_BRANDS,
-   ADD_BRANDS,
+   ADD_BRAND,
    GET_SHAPES,
+   ADD_SHAPE,
    GET_PRODUCTS_TO_SHOP,
    ADD_PRODUCT,
-   CLEAR_PRODUCT,
-   ADD_BRAND
+   CLEAR_PRODUCT
 } from './types';
 
 import { PRODUCT_SERVER } from '../components/utils/misc';
@@ -109,6 +109,27 @@ export function addBrand(dataToSubmit, existingBrands){
     });
     return{
         type: ADD_BRAND,
+        payload: request 
+    }
+
+}
+
+export function addShape(dataToSubmit, existingShapes){
+
+    const request = axios.post(`${PRODUCT_SERVER}/shape`,dataToSubmit)
+    .then(response=>{
+        let shapes = [
+            ...existingShapes,
+            response.data.shape
+        ];
+        return {
+            success: response.data.success,
+            shapes
+        }
+
+    });
+    return{
+        type: ADD_SHAPE,
         payload: request 
     }
 
