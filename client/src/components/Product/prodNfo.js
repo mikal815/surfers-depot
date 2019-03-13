@@ -8,6 +8,46 @@ import faTimes from '@fortawesome/fontawesome-free-solid/faTimes';
 
 const ProdNfo = (props) => {
 
+    const showProdTags = (detail) => (
+        <div className="product_tags">
+            {detail.shipping ?
+                <div className="tag">
+                    <div><FontAwesomeIcon icon={faTruck} /></div>
+                    <div className="tag_text">
+                        <div>Free shipping</div>
+                        <div>And return</div>
+                    </div>
+
+                </div>
+
+
+                : null
+            }
+            {detail.available ?
+                <div className="tag">
+                    <div><FontAwesomeIcon icon={faCheck} /></div>
+                    <div className="tag_text">
+                        <div>Available</div>
+                        <div>in store</div>
+                    </div>
+
+                </div>
+
+                :
+                <div className="tag">
+                    <div><FontAwesomeIcon icon={faTimes} /></div>
+                    <div className="tag_text">
+                        <div>Not Available</div>
+                        <div>Preorder only</div>
+                    </div>
+
+                </div>
+
+            }
+
+        </div>
+    )
+
     const detail = props.detail;
     return (
         <div>
@@ -15,6 +55,7 @@ const ProdNfo = (props) => {
             <p>
                 {detail.description}
             </p>
+            {showProdTags(detail)}
         </div>
     );
 };
