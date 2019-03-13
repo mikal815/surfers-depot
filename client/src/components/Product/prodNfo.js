@@ -64,6 +64,17 @@ const ProdNfo = (props) => {
 
             )
 
+    const showProdSpecifications = (detail) => (
+        <div className="product_specifications">
+            <h2>Specs:</h2>
+            <div>
+                <div className="item">
+                    <strong>Shape:</strong> {detail.shape.name}
+                </div>
+            </div>
+        </div>
+    )                        
+
     const detail = props.detail;
     return (
         <div>
@@ -73,6 +84,7 @@ const ProdNfo = (props) => {
             </p>
             {showProdTags(detail)}
             {showProdActions(detail)}
+            {showProdSpecifications(detail)}
         </div>
     );
 };
