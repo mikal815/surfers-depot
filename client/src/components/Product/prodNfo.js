@@ -48,6 +48,22 @@ const ProdNfo = (props) => {
         </div>
     )
 
+            const showProdActions = (detail) => (
+                <div className="product_actions">
+                <div className="price">${detail.price}</div>
+                    <div className="cart">
+                        <MyButton
+                            type="add_to_cart_link"
+                            runAction={()=>{
+                                console.log('add to cart')
+                            }}
+                        />
+                    </div>
+
+                </div>
+
+            )
+
     const detail = props.detail;
     return (
         <div>
@@ -56,6 +72,7 @@ const ProdNfo = (props) => {
                 {detail.description}
             </p>
             {showProdTags(detail)}
+            {showProdActions(detail)}
         </div>
     );
 };
