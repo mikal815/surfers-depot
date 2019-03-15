@@ -80,7 +80,7 @@ class ProdImg extends Component {
                             id={detail.id}
                             images={this.state.lightboxImages}
                             open={this.state.open}
-                            pos={this.state.pos}
+                            pos={this.state.imagePos}
                             onclose={()=> this.handleLightBoxClose()}
                         />
                     :null

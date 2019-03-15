@@ -21,7 +21,19 @@ class ImageLightBox extends Component {
         }  
         return false 
     }
+
+    gotoPrevious = () => {
+        this.setState({
+            currentImage: this.state.currentImage -1
+        })
+    }
     
+    gotoNext = () => {
+        this.setState({
+            currentImage: this.state.currentImage +1
+        })
+    }
+
     closeLightbox = ()=> {
         this.props.onclose();
     }
@@ -32,7 +44,7 @@ class ImageLightBox extends Component {
                 currentImage={this.state.currentImage}
                 images={this.state.images}
                 isOpen={this.state.lightboxIsOpen}
-                onClickPrev={()=> this.gotoPrevios()}
+                onClickPrev={()=> this.gotoPrevious()}
                 onClickNext={()=> this.gotoNext()}
                 onClose={()=> this.closeLightbox()}
             />
