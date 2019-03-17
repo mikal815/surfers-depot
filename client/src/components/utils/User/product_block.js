@@ -36,6 +36,20 @@ const UserProductBlock = ({products,removeItem}) => {
                         </div>
 
                     </div>
+                    <div className="item">
+                        <h4>Price</h4>
+                        <div>
+                          $ {product.price}
+                        </div>
+
+                    </div>
+                    <div className="item btn">
+                        <div className=" cart_remove_btn"
+                             onClick={()=> removeItem(product._id)}>
+                            Remove
+                        </div>
+
+                    </div>
                 </div>
             ))
 
