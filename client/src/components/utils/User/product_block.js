@@ -29,6 +29,13 @@ const UserProductBlock = ({products,removeItem}) => {
                         </div>
 
                     </div>
+                    <div className="item">
+                        <h4>Quantity</h4>
+                        <div>
+                            {product.quantity}
+                        </div>
+
+                    </div>
                 </div>
             ))
 
