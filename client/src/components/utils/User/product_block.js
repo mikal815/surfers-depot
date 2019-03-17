@@ -22,6 +22,13 @@ const UserProductBlock = ({products,removeItem}) => {
                         ></div>
 
                     </div>
+                    <div className="item">
+                        <h4>Product name</h4>
+                        <div>
+                            {product.brand.name} {product.name}
+                        </div>
+
+                    </div>
                 </div>
             ))
 
