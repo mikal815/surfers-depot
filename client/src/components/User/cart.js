@@ -31,11 +31,26 @@ class UserCart extends Component {
 
                 this.props.dispatch(getCartItems(cartItems,user.userData.cart))
                 .then(()=>{
-
+                    if(this.props.user.cartDetail.length > 0){
+                        this.calculateTotal(this.props.user.cartDetail);
+                    }
                 })
 
             }
         }
+    }
+
+    calculateTotal = (cartDetail) => {
+        let total = 0;
+
+        cartDetail.forEach(item=>{
+            total += parseInt(item.price, 10) * item.quantity
+        });
+
+        this.setState({
+            total,
+            showTotal: true
+        });
     }
 
     removeFromCart = () => {
@@ -53,6 +68,16 @@ class UserCart extends Component {
                             type="cart"
                             removeItem={(id)=> this.removeFromCart(id)}
                         />
+                        {this.state.showTotal ?
+                            <div>
+                                <div className="user_cart_sum">
+                                    <div>
+                                        Total amount: $ {this.state.total}
+                                    </div>
+                                </div>
+                            </div>
+                    
+                        :null}
                     </div>
                 </div>
             </UserLayout>
