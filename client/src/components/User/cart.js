@@ -3,9 +3,9 @@ import UserLayout from '../../hoc/user';
 import UserProductBlock from '../utils/User/product_block';
 
 import { connect } from 'react-redux';
-import { getCartItems } from '../../actions/user_actions';
+import { getCartItems, removeCartItem } from '../../actions/user_actions';
 
-import fontAwesomeIcon from '@fortawesome/react-fontawesome';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import faFrown from '@fortawesome/fontawesome-free-solid/faFrown';
 import faSmile from '@fortawesome/fontawesome-free-solid/faSmile';
 
@@ -53,9 +53,27 @@ class UserCart extends Component {
         });
     }
 
-    removeFromCart = () => {
-
+    removeFromCart = (id) => {
+        this.props.dispatch(removeCartItem(id))
+        .then(()=>{
+            if(this.props.user.cartDetail.length <= 0){
+                this.setState({
+                    showTotal: false
+                })
+            } else {
+                this.calculateTotal(this.props.user.cartDetail)
+            }
+        })
     }
+
+    showNoItemMessage = () => (
+        <div className="cart_no_items">
+            <FontAwesomeIcon icon={faFrown}/>
+            <div>
+                You have no items
+            </div>
+        </div>
+    )
 
     render() {
         return (
@@ -77,8 +95,31 @@ class UserCart extends Component {
                                 </div>
                             </div>
                     
-                        :null}
+                        :
+                            this.state.showSuccess ?
+                                <div className="cart_success">
+                                    <FontAwesomeIcon icon={faSmile}/>
+                                    <div>
+                                        THANK YOU
+                                    </div>
+                                    <div>
+                                        YOUR ORDER IS NOW COMPLETE
+                                    </div>
+                                </div>
+
+                            :
+                            this.showNoItemMessage()
+                        }
                     </div>
+
+                        {
+                            this.state.showTotal ?
+                                <div className="paypal_button_container">
+                                    Paypal
+                                </div>
+                            :null
+                        }
+
                 </div>
             </UserLayout>
 
