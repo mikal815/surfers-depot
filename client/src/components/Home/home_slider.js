@@ -27,9 +27,11 @@ const HomeSlider = (props) => {
         dots: false,
         invinite: true,
         speed: 500,
-        slidesToShow: 1,
+        slidesToShow: 2,
         slidesToScroll: 1,
-        arrows: true
+        arrows: false,
+        autoplay: true,
+        autoplaySpeed: 2000
     }
 
     const generateSlides = () =>(
