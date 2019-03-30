@@ -29,7 +29,7 @@ const HomeSlider = (props) => {
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
-        arrows: false
+        arrows: true
     }
 
     const generateSlides = () =>(

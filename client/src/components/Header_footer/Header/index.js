@@ -52,12 +52,39 @@ class Header extends Component {
         })
     }
 
-    cartLink = (item,i) => {
-        const user = this.props.user.userData;
 
+    cartLink = (item,i) => {
+
+        const user = this.props.user.userData;
+       
+
+
+        user.sum = function(items, prop){
+
+            return items.reduce( function(a, b, i){  
+                
+                return a + b[prop];
+            }, 0);
+        };
+
+        user.cartTotal = user.sum(user.cart, 'quantity');
+    
+
+        
         return (
             <div className="cart_link" key={i}>
-                <span>{user.cart ? user.cart.length:0}</span>
+
+                
+                <span>
+                    
+                    {user.cartTotal}
+
+
+                {/* {user.cart ? user.cart.length:0} */}
+
+                </span>
+
+
                 <Link to={item.linkTo}>
                     {item.name}
                 </Link>
