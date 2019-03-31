@@ -137,14 +137,15 @@ class Header extends Component {
     render() {
         return (
             <header className="bck_b_light">
-                <div className="container">
-                    <div className="left">
+                <div className="container row">
+                
+                    <div className="left col">
                         <div className="logo">
                             SURFER'S DEPOT
                         </div>
 
                     </div>
-                    <div className="right">
+                    <div className="right col">
                         <div className="top">
                             {this.showLinks(this.state.user)}
                         </div>

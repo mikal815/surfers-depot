@@ -16,7 +16,9 @@ class Home extends Component {
     render() {
         return (
             <div>
+                <div className="homeslider">
                 <HomeSlider/>
+                </div>
                 <CardBlock
                     list={this.props.products.bySell}
                     title="Best selling boards"

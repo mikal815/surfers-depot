@@ -6,7 +6,7 @@ body {
 }
 
 .container {
-    width:1100px;
+    width: auto;
     margin: 0 auto;
 }
 .page_container {
@@ -274,6 +274,19 @@ header .container .right{
    border-left: 1px solid #eeeeee;
    border-right: 1px solid #eeeeee;
 }
+
+/* @media screen and (max-width: 575px) {
+
+    .lefty{
+        display: block;
+    }
+
+    .righty{
+        display: block;
+    }
+
+} */
+
 header .container .right .top ,
 header .container .right .bottom {
     text-transform: uppercase;
@@ -362,6 +375,8 @@ footer .business_nfo .nfo {
         FEATURED IMAGE
 ==============================*/
 
+
+
 .featured_container .featured_image {
     position:relative;
     background-size: cover !important;
@@ -392,6 +407,10 @@ footer .business_nfo .nfo {
     font-weight: 300;
     margin-top: 10px;
 }
+
+@media screen and (max-width: 576px) {
+    .homeslider { display: none; }
+  }
 
 /*============================
         FEATURED PROMOTION
