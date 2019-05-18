@@ -7,10 +7,10 @@ const links = [
         name: 'My account',
         linkTo: '/user/dashboard'
     },
-    {
-        name: 'User information',
-        linkTo: '/user/user_profile'
-    },
+    // {
+    //     name: 'User information',
+    //     linkTo: '/user/user_profile'
+    // },
     {
         name: 'My cart',
         linkTo: '/user/cart'
@@ -18,10 +18,10 @@ const links = [
 ]
 
 const admin = [
-    {
-        name: 'Site info',
-        linkTo: '/admin/site_info'
-    },
+    // {
+    //     name: 'Site info',
+    //     linkTo: '/admin/site_info'
+    // },
     {
         name: 'Add products',
         linkTo: '/admin/add_product'
