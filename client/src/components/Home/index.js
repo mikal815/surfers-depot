@@ -19,10 +19,12 @@ class Home extends Component {
                 <div className="homeslider">
                 <HomeSlider/>
                 </div>
+                <div className="row">
                 <CardBlock
                     list={this.props.products.bySell}
                     title="Best selling boards"
                 />
+                </div>
                 <HomePromotion/>
                 <CardBlock
                     list={this.props.products.byArrival}

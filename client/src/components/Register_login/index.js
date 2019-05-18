@@ -9,10 +9,7 @@ const RegisterLogin = () => {
                 <div className="register_login_container">
                 <div className="left">
                 <h1>New Customers</h1>
-                <p>bewbfbefiulebr ifubweibweoibw webwilecbwebciwl ehbwlbwbowbvowb ewhbwolbvwoibvil wbvilwubevlwb wbvelwebvliwuebv
-                    fkwhvbuwbvuowb
-                    wekhbvwuyvwuiv 
-                </p>
+                
                 <MyButton
                     type="default"
                     title="Create an account"
@@ -24,7 +21,7 @@ const RegisterLogin = () => {
                 </div>
                 <div className="right">
                 <h2>Registered customers</h2>
-                <p>If you have an account please log in.</p>
+                <p>If you have an account please log in. For demo purposes use email: demo@gmail.com and password: password 123</p>
                     <Login/>
                 </div>
 
