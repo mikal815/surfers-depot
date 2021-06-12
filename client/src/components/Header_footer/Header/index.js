@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 
-import { connect } from 'react-redux'; 
+import { connect } from 'react-redux';
 import { logoutUser } from '../../../actions/user_actions';
 
 class Header extends Component {
@@ -9,34 +9,34 @@ class Header extends Component {
     state = {
         page: [
             {
-                name:'Home',
+                name: 'Home',
                 linkTo: '/',
                 public: true
             },
             {
-                name:'Surfboards',
+                name: 'Surfboards',
                 linkTo: '/shop',
                 public: true
             }
         ],
         user: [
             {
-                name:'My Cart',
+                name: 'My Cart',
                 linkTo: '/user/cart',
                 public: false
             },
             {
-                name:'My Account',
+                name: 'My Account',
                 linkTo: '/user/dashboard',
                 public: false
             },
             {
-                name:'Log in',
+                name: 'Log in',
                 linkTo: '/register_login',
                 public: true
             },
             {
-                name:'Log out',
+                name: 'Log out',
                 linkTo: '/user/logout',
                 public: false
             }
@@ -45,42 +45,42 @@ class Header extends Component {
 
 
     logoutHandler = () => {
-        this.props.dispatch(logoutUser()).then(response =>{
-            if(response.payload.success){
+        this.props.dispatch(logoutUser()).then(response => {
+            if (response.payload.success) {
                 this.props.history.push('/')
             }
         })
     }
 
 
-    cartLink = (item,i) => {
+    cartLink = (item, i) => {
 
         const user = this.props.user.userData;
-       
 
 
-        user.sum = function(items, prop){
 
-            return items.reduce( function(a, b, i){  
-                
+        user.sum = function (items, prop) {
+
+            return items.reduce(function (a, b, i) {
+
                 return a + b[prop];
             }, 0);
         };
 
         user.cartTotal = user.sum(user.cart, 'quantity');
-    
 
-        
+
+
         return (
             <div className="cart_link" key={i}>
 
-                
+
                 <span>
-                    
+
                     {user.cartTotal}
 
 
-                {/* {user.cart ? user.cart.length:0} */}
+                    {/* {user.cart ? user.cart.length:0} */}
 
                 </span>
 
@@ -93,42 +93,42 @@ class Header extends Component {
     }
 
 
-    defaultLink = (item,i) =>(
+    defaultLink = (item, i) => (
         item.name === 'Log out' ?
             <div className="log_out_link"
                 key={i}
-                onClick={()=> this.logoutHandler()}
+                onClick={() => this.logoutHandler()}
             >
                 {item.name}
             </div>
-        :
-        <Link to={item.linkTo} key={i}>
-            {item.name}
-        </Link>
+            :
+            <Link to={item.linkTo} key={i}>
+                {item.name}
+            </Link>
     )
 
-    
-    showLinks = (type) =>{
+
+    showLinks = (type) => {
         let list = [];
-        if(this.props.user.userData){
-            type.forEach((item)=>{
-                if(!this.props.user.userData.isAuth){
-                    if(item.public === true){
+        if (this.props.user.userData) {
+            type.forEach((item) => {
+                if (!this.props.user.userData.isAuth) {
+                    if (item.public === true) {
                         list.push(item)
                     }
-                } else{
-                    if(item.name !== 'Log in'){
+                } else {
+                    if (item.name !== 'Log in') {
                         list.push(item)
                     }
                 }
             });
         }
 
-        return list.map((item,i)=>{
-            if(item.name !== 'My Cart'){
-                return this.defaultLink(item,i)
+        return list.map((item, i) => {
+            if (item.name !== 'My Cart') {
+                return this.defaultLink(item, i)
             } else {
-                return this.cartLink(item,i)
+                return this.cartLink(item, i)
             }
         })
     }
@@ -138,7 +138,7 @@ class Header extends Component {
         return (
             <header className="bck_b_light">
                 <div className="container row">
-                
+
                     <div className="left col">
                         <div className="logo">
                             SURFER'S DEPOT
@@ -157,14 +157,14 @@ class Header extends Component {
 
                 </div>
 
-                
+
             </header>
         );
     }
 }
 
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
     return {
         user: state.user
     }
