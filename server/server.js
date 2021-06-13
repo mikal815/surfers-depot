@@ -363,11 +363,11 @@ app.get('/api/users/removeFromCart', auth, (req, res) => {
 
 
 // cors origin URL - Allow inbound traffic from origin. I added this 6/13/21
-corsOptions = {
-    origin: "https://surfers-depot.herokuapp.com/",
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-};
-app.use(cors(corsOptions));
+// corsOptions = {
+//     origin: "https://surfers-depot.herokuapp.com/",
+//     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+// };
+// app.use(cors(corsOptions));
 
 
 
