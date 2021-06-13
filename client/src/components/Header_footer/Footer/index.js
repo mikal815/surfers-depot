@@ -22,7 +22,7 @@ const Footer = () => {
                                     className="icon"
                                 />
                                 <div className="nfo">
-                                    <div>Adress</div>
+                                    <div>Address</div>
                                     <div>1515 Brighton pl</div>
 
                                 </div>
@@ -65,12 +65,12 @@ const Footer = () => {
 
                     </div>
                     <div className="left">
-                    <h2>Be the first to know</h2>
-                    <div>
+                        <h2>Be the first to know</h2>
                         <div>
-                            Get all the latest information on events, sales and offers. Don't miss out.
+                            <div>
+                                Get all the latest information on events, sales and offers. Don't miss out.
                         </div>
-                    </div>
+                        </div>
 
                     </div>
                 </div>
