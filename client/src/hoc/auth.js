@@ -36,13 +36,13 @@ export default function (ComposedClass, reload, adminRoute = null) {
         }
 
         render() {
-            if (this.state.loading) {
-                return (
-                    <div className="main_loader">
-                        <CircularProgress style={{ color: '#2196F3' }} thickness={7} />
-                    </div>
-                )
-            }
+            // if (this.state.loading) {
+            //     return (
+            //         <div className="main_loader">
+            //             <CircularProgress style={{ color: '#2196F3' }} thickness={7} />
+            //         </div>
+            //     )
+            // }
             return (
                 <ComposedClass {...this.props} user={this.props.user} />
             );
