@@ -196,9 +196,9 @@ app.get('/api/product/brands', (req, res) => {
     })
 })
 
-//=================================
+//================================
 //             USERS 
-//=================================
+//================================
 
 
 app.get('/api/users/auth', auth, (req, res) => {
@@ -360,15 +360,6 @@ app.get('/api/users/removeFromCart', auth, (req, res) => {
         }
     )
 })
-
-
-// cors origin URL - Allow inbound traffic from origin. I added this 6/13/21
-// corsOptions = {
-//     origin: "3.219.246.57/32",
-//     optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-// };
-// app.use(cors(corsOptions));
-
 
 
 
