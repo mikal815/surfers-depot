@@ -365,15 +365,28 @@ app.get('/api/users/removeFromCart', auth, (req, res) => {
 
 
 // Default
+// if (process.env.NODE_ENV === 'production') {
+//     const path = require('path');
+//     app.get('/*', (req, res) => {
+//         res.sendfile(path.resolve(__dirname, '../client', 'build', 'index.html'))
+//     })
+// }
+
+
 if (process.env.NODE_ENV === 'production') {
     const path = require('path');
     app.get('/*', (req, res) => {
-        res.sendfile(path.resolve(__dirname, '../client', 'build', 'index.html'))
+        res.sendfile(path.resolve(__dirname, 'client', 'build', 'index.html'))
     })
 }
+
 
 const port = process.env.PORT || 3002;
 
 app.listen(port, () => {
     console.log(`Server running at ${port}`)
 })
+
+
+
+
