@@ -381,11 +381,19 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 
-const port = process.env.PORT || 3002;
+const server = app.listen(process.env.PORT || 3002, () => {
+    const port = server.address().port;
+    console.log(`Express is working on port ${port}`);
+});
 
-app.listen(port, () => {
-    console.log(`Server running at ${port}`)
-})
+
+
+
+// const port = process.env.PORT || 3002;
+
+// app.listen(port, () => {
+//     console.log(`Server running at ${port}`)
+// })
 
 
 
