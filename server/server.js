@@ -364,7 +364,7 @@ app.get('/api/users/removeFromCart', auth, (req, res) => {
 
 
 
-// Default
+// Default //
 // if (process.env.NODE_ENV === 'production') {
 //     const path = require('path');
 //     app.get('/*', (req, res) => {
