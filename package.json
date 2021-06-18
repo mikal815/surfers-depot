@@ -23,7 +23,7 @@
   "bugs": {
     "url": "https://github.com/mikal815/surfers-depot/issues"
   },
-  "homepage": "https://github.com/mikal815/surfers-depot#readme",
+  "homepage": "https://surfers-depot-2s3i9muj9-mikal815.vercel.app/",
   "dependencies": {
     "@fortawesome/fontawesome": "1.1.8",
     "@fortawesome/fontawesome-free-solid": "5.0.13",
