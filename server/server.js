@@ -18,9 +18,6 @@ app.use(cookieParser());
 
 app.use(express.static('client/build'))
 
-const cors = require('cors')
-app.use(cors())
-
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
     api_key: process.env.CLOUD_API_KEY,
