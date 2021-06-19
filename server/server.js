@@ -4,6 +4,7 @@ const cookieParser = require('cookie-parser');
 const formidable = require('express-formidable');
 const cloudinary = require('cloudinary');
 
+
 const app = express();
 const mongoose = require('mongoose');
 require('dotenv').config();
@@ -16,6 +17,9 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.use(express.static('client/build'))
+
+const cors = require('cors')
+app.use(cors())
 
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
